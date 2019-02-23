@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 import os, sys
 import pprint
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from MessageHandlerBot import MessageHandlerBot
 from pymongo import MongoClient
 import creds as CR
 from pymessenger import Bot
 import re
 from datetime import datetime
+from questionnaire_tree import build_tree, determine_stage
+from functools import partial
 
 # TIPICAL GREETINGS:
 GREETINGS = set(["salut!","salut","hello","hi","holaa","hola","hey","holas","heyy","hii","hiii"])
@@ -19,10 +21,11 @@ questions = {'0':'Are you looking for a place to stay tonight?',
 answers = {'0':['yes','no']}
 
 
+# Build and load entire decision tree
+decision_tree = build_tree()
 
-
-
-
+# Partial function to include decision tree
+determine_tree_stage = partial(determine_stage, decision_tree=decision_tree)
 
 # Initialize database:
 def point_collection():
@@ -190,6 +193,16 @@ def webhook():
 
     return "ok", 200
 
+@app.route("/web")
+def questionnaire_initial_state():
+    return jsonify(decision_tree['0'])
+
+@app.route("/web/questions/<question_stage>")
+def questionnaire_stage(question_stage):
+    req_answer = request.form['answer']
+    seq_string = [(question_stage, req_answer)]
+
+    return jsonify(determine_tree_stage(seq_string))
 
 if __name__ == "__main__":
 	app.run(host = "0.0.0.0",port=5000)
