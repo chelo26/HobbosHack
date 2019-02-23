@@ -102,9 +102,8 @@ def answer_to_message(last_message_received,last_message_sent):
 
 # Messages database:
 messages_table = point_collection()
-print('database')
+
 # Bots:
-#listener_bot = MessageHandlerBot()
 responder_bot = Bot(CR.PAGE_ACCESS_TOKEN)
 
 
@@ -157,9 +156,11 @@ def webhook():
         #last_message_received = listener_bot.find_last_message_received(messages_table,sender_id)
 
         #qa_sequence = listener_bot.find_last_message_sent(messages_table,sender_id)
-        qa_sequence = listener_bot.get_messages_sequence(messages_table, sender_id)
+        sender_id = str(sender_id).strip()
+        print('sender_id_44:', sender_id)
+        message_seq = listener_bot.get_messages_sequence(messages_table,sender_id)
 
-        last_server_question = list(qa_sequence)
+        last_server_question = message_seq[-1]
         print("last question sent by server: ", last_server_question)
 
         # 4. Sending the answer:
@@ -169,6 +170,7 @@ def webhook():
         #server_reply = get_reply(last_client_message,last_server_question)
 
         post = generate_post(sender_id,server_next_question)
+
         listener_bot.store_message(messages_table,post)
 
         responder_bot.send_text_message(sender_id, server_next_question)
