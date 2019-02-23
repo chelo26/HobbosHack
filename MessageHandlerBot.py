@@ -81,8 +81,10 @@ class MessageHandlerBot():
     def get_messages_sequence(self, db, sender_id):
 
         #message_seq = db.find({"sender_id":sender_id},{"message": 1, "_id":0}).sort([{"timestamp":-1}])
-
-        message_seq = db.find({"sender_id":sender_id},{"message": 1, "_id":0,"timestamp":1})#.sort({"timestamp":-1})
+        try:
+            message_seq = db.find({"sender_id":sender_id},{"message": 1, "_id":0,"timestamp":1})#.sort({"timestamp":-1})
+        except:
+            return 'new_user'
 
 
         message_df = pd.DataFrame(message_seq)

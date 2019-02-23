@@ -6,6 +6,7 @@ from MessageHandlerBot import MessageHandlerBot
 from pymongo import MongoClient
 import creds as CR
 from pymessenger import Bot
+from pymessenger import Button
 import re
 from datetime import datetime
 
@@ -18,6 +19,52 @@ questions = {'0':'Are you looking for a place to stay tonight?',
 
 answers = {'0':['yes','no']}
 
+# Building the tree:
+def build_tree():
+    questions = {'0': 'Hi, welcome to DePaul. \nAre you looking for a place to stay tonight?',
+                 '1': 'Where are you? (Share GPS location or type)',
+                 '2': 'How old are you?',
+                 '3': 'Are you a woman, man, other?',
+                 '4': 'To make sure you feel comfortable in your environment, are you ...',
+                 '5': 'To make sure our staff know how to help you, click on all of those that apply',
+                 '6': 'Do you have criminal record?'
+                 }
+
+    sub_seq = {'0': [('yes', '1'), ('no', None)],
+               '1': [('single_choice', 2)] ,
+               '2': [('under_16', None), ('16_to_25', 3), ('25_and_over', None)],
+               '3': [('male', 4), ('female', 4), ('other', 4)],
+               '4': [('straight', 5), ('homosexual', 5), ('other', 5)],
+               '5': [('pregnant', 6), ('anxiety', 6), ('depression', 6)],
+               '6': [('yes', 7), ('no', 7)]
+               }
+
+    return { key : {'text': questions[key], 'children': {value[0]: value[1] for value in values}} for key, values in sub_seq.items()}
+
+DECISION_TREE = build_tree()
+
+def determine_stage(seq_string_list):
+    # Expect list of [(q1, a1), (q2, a2) ...]
+    res = None
+
+    try:
+        for ss in seq_string_list:
+            res = DECISION_TREE[ss[0]]['children'][ss[1]]['id']
+
+    except:
+        print("Something may have gone wrong, most probably different answer?")
+        # If there were sequences, roll back to last question
+
+        if seq_string_list:
+            res = seq_string_list[-1][0]
+
+        res = '0'
+        # Anything else might be suspicious activity, go back to initial state
+
+    return res
+
+
+TREE = {0:'Q1',1:''}
 
 
 
@@ -50,54 +97,30 @@ def encode_received_message(message):
 # Get a reply:
 def get_reply(last_client_message,last):
     last_message = clean_message(last_client_message)
+    return
 
 
+# Ask next question:
+def ask_question(responder_bot,sender_id,question_number = 0):
 
+    if question_number == 0:
+        greeting = "Hi welcome to De Paul!"
+        help_type = "How could we help you?"
+        code = 0
+        buttons = [
+                {"title":"I need a place to stay tonight"},
+                {"title":"Information about Depaul"},
+                  {
+                    "type": "postback",
+                    "title": "Something else",
+                    "payload": "Please call this number if you want to talk to somebody"
+                   }]
 
+        # Replying:
+        responder_bot.send_text_message(sender_id,greeting)
+        responder_bot.send_button_message(sender_id,help_type,buttons)
 
-# Find an answer:
-
-def answer_to_message(last_message_received,last_message_sent):
-    # Cleaning message:
-    if last_message_sent:
-        last_message_sent = clean_message(last_message_sent)
-    if last_message_received:
-        last_message_received = clean_message(last_message_received)
-
-    # Different messages:
-    saludo = "Hi welcome to De Paul! \nHow could we help you ?"
-    buttons = [
-            {
-            "type":"web_url",
-            "url":"http://www.paginasiete.bo/",
-            "title":"Bolivian News"
-            },
-            {
-              "type":"web_url",
-              "url":"http://www.paginasiete.bo/",
-              "title":"Bolivian News"
-              },
-
-              {
-                "type": "postback",
-                "title": "otro",
-                "payload": "balbal"
-               }]
-
-    if last_message_received in GREETINGS:
-        return (saludo,"text")
-
-    elif "yes" in last_message_received: #and last_message_sent == saludo:
-        offers = "great, I can offer you:"
-        return (offers,buttons,"options")
-
-    elif last_message_received =="otro":
-        return ("what ? ","text")
-
-    else:
-        return ("To complete","text")
-
-
+    return code
 
 
 # Messages database:
@@ -139,8 +162,6 @@ def webhook():
     last_client_message = clean_message(last_client_message)
     print("last client message: ", last_client_message)
 
-    #print("send back bool : ", send_back_bool)
-    #print("")
 
     # If we should message back:
     if send_back_bool == True:
@@ -153,21 +174,15 @@ def webhook():
         sender_id = listener_bot.sender_id
 
         # 3.2 Finding last messages:
-        #last_message_received = listener_bot.find_last_message_received(messages_table,sender_id)
-
-        #qa_sequence = listener_bot.find_last_message_sent(messages_table,sender_id)
         sender_id = str(sender_id).strip()
-        print('sender_id_44:', sender_id)
         message_seq = listener_bot.get_messages_sequence(messages_table,sender_id)
 
-        last_server_question = message_seq[-1]
-        print("last question sent by server: ", last_server_question)
-
         # 4. Sending the answer:
-        #answer_tuple = answer_to_message(last_message_received,last_message_sent)
-        server_next_question = 'what?'
-
-        #server_reply = get_reply(last_client_message,last_server_question)
+        try:
+            num_past_messages = len(message_seq)
+            code_question = ask_question(responder_bot, sender_id, num_past_messages)
+        except:
+            code_question = ask_question(responder_bot, sender_id)
 
         post = generate_post(sender_id,server_next_question)
 
