@@ -81,6 +81,7 @@ def answer_to_message(last_message_received,last_message_sent):
 
 # Messages database:
 messages_table = point_collection()
+print('database')
 # Bots:
 #listener_bot = MessageHandlerBot()
 responder_bot = Bot(CR.PAGE_ACCESS_TOKEN)
@@ -152,4 +153,4 @@ def webhook():
 
 
 if __name__ == "__main__":
-	app.run(host = "0.0.0.0")
+	app.run(host = "0.0.0.0",port=5000)

@@ -1,10 +1,11 @@
+hack_env/
+.idea/
 .ipynb_checkpoints/
 ssl configs.rtf  
 llamita_aws.pem
 llamita_key.pem
 myenv/
 env_chat/
-creds.py
 old_app.py
 test_db.py
 __pycache__/
