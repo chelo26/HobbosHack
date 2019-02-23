@@ -8,7 +8,7 @@ import creds as CR
 from pymessenger import Bot
 import re
 from datetime import datetime
-from questionnaire_tree import build_tree, determine_stage
+from build_decision_tree import build_tree, determine_stage
 from functools import partial
 
 # TIPICAL GREETINGS:
@@ -193,12 +193,12 @@ def webhook():
 
     return "ok", 200
 
-@app.route("/web")
+@app.route("/web", methods=['POST'])
 def questionnaire_initial_state():
     return jsonify(decision_tree['0'])
 
 @app.route("/web/questions/<question_stage>")
-def questionnaire_stage(question_stage):
+def questionnaire_stage(question_stage, methods=['POST']):
     req_answer = request.form['answer']
     seq_string = [(question_stage, req_answer)]
 
