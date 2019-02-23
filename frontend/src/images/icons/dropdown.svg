@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 13</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-739.000000, -104.000000)" fill="#32535B">
+            <path d="M805.933519,140.266257 L789.193,157.006775 L771.994763,139.808538 L765.068019,146.735281 L788.735281,170.402543 L812.402543,146.735281 L805.933519,140.266257 Z M789,204 C761.385763,204 739,181.614237 739,154 C739,126.385763 761.385763,104 789,104 C816.614237,104 839,126.385763 839,154 C839,181.614237 816.614237,204 789,204 Z" id="Oval-13" transform="translate(789.000000, 154.000000) rotate(-90.000000) translate(-789.000000, -154.000000) "></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,170 @@
+
+
+@font-face {
+    font-family: 'F37Ginger';
+    src: url("fonts/F37Ginger/F37Ginger-Regular.eot");
+    src: url("fonts/F37Ginger/F37Ginger-Regular.woff2") format("woff2"), url("fonts/F37Ginger/F37Ginger-Regular.woff") format("woff"), url("fonts/F37Ginger/F37Ginger-Regular.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Bold';
+    src: url("fonts/F37Ginger-Bold/F37Ginger-Bold.eot");
+    src: url("fonts/F37Ginger-Bold/F37Ginger-Bold.woff2") format("woff2"), url("fonts/F37Ginger-Bold/F37Ginger-Bold.woff") format("woff"), url("fonts/F37Ginger-Bold/F37Ginger-Bold.svg") format("svg");
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Bold-Italic';
+    src: url("fonts/F37Ginger-Bold-Italic/F37Ginger-BoldItalic.eot");
+    src: url("fonts/F37Ginger-Bold-Italic/F37Ginger-BoldItalic.woff2") format("woff2"), url("fonts/F37Ginger-Bold-Italic/F37Ginger-BoldItalic.woff") format("woff"), url("fonts/F37Ginger-Bold-Italic/F37Ginger-BoldItalic.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Italic';
+    src: url("fonts/F37Ginger-Italic/F37Ginger-Italic.eot");
+    src: url("fonts/F37Ginger-Italic/F37Ginger-Italic.woff2") format("woff2"), url("fonts/F37Ginger-Italic/F37Ginger-Italic.woff") format("woff"), url("fonts/F37Ginger-Italic/F37Ginger-Italic.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Light';
+    src: url("fonts/F37Ginger-Light/F37Ginger-Light.eot");
+    src: url("fonts/F37Ginger-Light/F37Ginger-Light.woff2") format("woff2"), url("fonts/F37Ginger-Light/F37Ginger-Light.woff") format("woff"), url("fonts/F37Ginger-Light/F37Ginger-Light.svg") format("svg");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Light-Italic';
+    src: url("fonts/F37Ginger-Light-Italic/F37Ginger-LightItalic.eot");
+    src: url("fonts/F37Ginger-Light-Italic/F37Ginger-LightItalic.woff2") format("woff2"), url("fonts/F37Ginger-Light-Italic/F37Ginger-LightItalic.woff") format("woff"), url("fonts/F37Ginger-Light-Italic/F37Ginger-LightItalic.svg") format("svg");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Thin';
+    src: url("fonts/F37Ginger-Thin/F37Ginger-Thin.eot");
+    src: url("fonts/F37Ginger-Thin/F37Ginger-Thin.woff2") format("woff2"), url("fonts/F37Ginger-Thin/F37Ginger-Thin.woff") format("woff"), url("fonts/F37Ginger-Thin/F37Ginger-Thin.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; }
+  
+  @font-face {
+    font-family: 'F37Ginger-Thin-Italic';
+    src: url("fonts/F37Ginger-Thin-Italic/F37Ginger-ThinItalic.eot");
+    src: url("fonts/F37Ginger-Thin-Italic/F37Ginger-ThinItalic.woff2") format("woff2"), url("fonts/F37Ginger-Thin-Italic/F37Ginger-ThinItalic.woff") format("woff"), url("fonts/F37Ginger-Thin-Italic/F37Ginger-ThinItalic.svg") format("svg");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-E305; 
+  }
+  
+  
+  /******Varibles******/
+  
+  $f37-r:'F37Ginger';
+  $f37-b: 'F37Ginger-Bold';
+  $f37-l: 'F37Ginger-Light';
+  $f37-i: 'F37Ginger-Italic';
+
+
+
+//Colour pallet for Edyne Care
+//At the top of every scss file, one must ' @import "./master"; ' to have access to the variables
+//then use it like "property: $c2;"
+$c1: #1D4042;
+$c02:#32535B;
+$c2:#33535C;
+$c3:#66564A;
+$c4:#E4F4E9;
+$c5:#EDF4F7;
+$c6: #F2E6D0;
+$c7:#F9F7EF;
+$c8: #FF9999;
+$c9:#F2989A;
+$c11:#ffffff;
+$c15:#FBF8EF;
+$c12:#f00;
+$c16:#FBF8EF;
+$c17:#67574A;
+$c21:#979797;
+$c22:#d8d8d8;
+$c23:#BDBDBD;
+
+.hoverDiv:nth-child(2n) {
+    background: #DCE8E0;
+}
+
+.hoverDiv {
+    background: #E0EDE3
+}
+.spanBlock  {
+    display: block;
+    font-size: 14px
+}
+
+
+.accordianCardBG{
+    background: #FBF8EF 
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: $c2;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #1D4042;
+    background: #FFFFFF;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #F9F7EF;
+    cursor: pointer;
+}
+.btn-outline-status {
+    color:  #FF9999;
+    background-color: transparent;
+    background-image: none;
+    border-color: #FF9999;
+}
+.btn-outline-status.disabled, .btn-outline-status:disabled {
+    color:  #FF9999;
+    background-color: transparent;
+}
+.modal-body{
+    word-wrap: break-word;
+}

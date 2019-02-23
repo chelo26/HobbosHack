@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="524px" height="447px" viewBox="0 0 524 447" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M266.052087,93.3792091 C234.058526,95.2323878 203.812824,110.746988 179.694304,132.312448 C155.575783,153.877907 137.036222,181.22713 121.050729,209.62495 C97.4159328,251.608349 78.473268,298.122473 78.6216102,346.57551 C78.8312243,414.71115 118.238675,478.972262 172.809287,518.076969 C227.379899,557.181676 295.314215,573.246954 361.942475,574.157056 C401.36605,574.694544 441.460389,570.055003 477.742977,554.273307 C520.38171,535.728331 556.24507,501.995204 579.380016,460.954882 C602.514963,419.914559 613.053715,371.817649 611.025296,324.482455 C610.535121,313.043528 611.347779,266.905316 542.055808,217.944469 C503.877018,190.974454 424.994396,154.243926 361.510348,118.538912 C346.095649,109.869861 301.725182,91.4996508 266.013389,93.3825066" id="path-1"></path>
+    </defs>
+    <g id="Branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Public/Homepage-Copy-4" transform="translate(-791.000000, -124.000000)">
+            <g id="Hero" transform="translate(-4.000000, 77.000000)">
+                <g id="Group" transform="translate(-288.000000, -85.000000)">
+                    <g id="Bubble" transform="translate(994.474260, 0.032414)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#FF9999" fill-rule="nonzero" transform="translate(344.945787, 333.723079) rotate(-26.000000) translate(-344.945787, -333.723079) " xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

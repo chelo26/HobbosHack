@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="791px" height="579px" viewBox="0 0 791 579" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M788.489047,569.746658 C812.268497,451.075606 737.94182,408.463992 621.041026,358.619532 C504.140232,308.775071 478.364325,302.229509 336.69221,255.019637 C195.020096,207.809766 165.378439,57 56.3871734,57 C-52.6040925,57 -14.0969617,881.751084 292.547852,776.643369 C599.192667,671.535653 764.709597,688.417711 788.489047,569.746658 Z" id="path-1"></path>
+    </defs>
+    <g id="Branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Public/Homepage-Copy-4" transform="translate(0.000000, -77.000000)">
+            <g id="Hero" transform="translate(-4.000000, 77.000000)">
+                <g id="Group" transform="translate(2.000000, -76.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Path-3" fill="#33535C" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
