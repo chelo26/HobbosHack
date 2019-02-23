@@ -4,6 +4,22 @@ from utils import wit_response
 from datetime import datetime
 import pandas as pd
 
+CODE_TREE = {0:'A0',1: 'Q1', 2: 'A1',3:'A2',4:'A3'}
+
+GREETINGS = {"salut!", "salut", "hello", "hi", "holaa", "hola", "hey", "holas", "heyy", "hii", "hiii"}
+NIGHTSTOP = {'yes':'A1','no':'A2'}
+LOCATIONS = {'london':'A3','greenwich':'A3','camden':'A3'}
+AGE='A4'
+GENDER = {'woman':'A5','man':'A6','LGBT':'A7','Other':'A8'}
+PROBLEM = {'1':'A9','2':'A10','3':'A11','4':'A12'}
+
+
+
+
+
+
+
+
 
 # Creating a message object that can contain image or text :
 class MessageHandlerBot():
@@ -26,12 +42,42 @@ class MessageHandlerBot():
             self.sender_id = messaging["sender"]["id"]
             self.recipient_id = messaging["recipient"]["id"]
             if message:
-                # print("message" , message)
+                print("first message" , message)
                 if len(message) == 3:
                     text = message["text"]
+                    text = text.lower()
                     self.text = text
-                    # self.type = "text"
-                    return text, True
+
+                    if text in GREETINGS:
+                        self.code = 'A0'
+                        return text, True
+
+                    elif text in NIGHTSTOP.keys():
+                        self.code = NIGHTSTOP[text]
+                        return text, True
+
+                    elif text in LOCATIONS.keys():
+                        self.code = LOCATIONS[text]
+                        return text, True
+
+                    elif text in GENDER.keys():
+                        self.code = GENDER[text]
+                        return text,True
+
+                    elif text in PROBLEM:
+                        self.code = PROBLEM[text]
+                        return text, True
+
+                    else:
+
+                        try:
+                            age = int(text)
+                            self.code = AGE
+                            return str(age), True
+                        except:
+                            return None, False
+
+                        return None, False
                 else:
                     return None, False
             elif messaging.get("postback"):
@@ -45,10 +91,12 @@ class MessageHandlerBot():
             return None, False
 
     def generate_post(self):
+
         post = {"sender_id": self.sender_id,
                 "recipient_id": self.recipient_id,
                 "message": self.text,
-                "timestamp": datetime.utcnow()}
+                "code":self.code,
+                "timestamp":datetime.utcnow()}
         return post
 
     def store_message(self, db, post):
@@ -82,11 +130,10 @@ class MessageHandlerBot():
 
         #message_seq = db.find({"sender_id":sender_id},{"message": 1, "_id":0}).sort([{"timestamp":-1}])
         try:
-            message_seq = db.find({"sender_id":sender_id},{"message": 1, "_id":0,"timestamp":1})#.sort({"timestamp":-1})
+            message_seq = db.find({"sender_id":sender_id},{"code": 1, "_id":0,"timestamp":1})
         except:
             return 'new_user'
 
-
         message_df = pd.DataFrame(message_seq)
-        message_seq = message_df.sort_values(by='timestamp', ascending=True).message.values
+        message_seq = message_df.sort_values(by='timestamp', ascending=True)['code'].values
         return message_seq
