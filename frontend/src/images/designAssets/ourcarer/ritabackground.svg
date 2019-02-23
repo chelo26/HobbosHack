@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="656px" viewBox="0 0 1440 656" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 21</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,50.1490833 C241.333333,16.7444101 482.666667,0.0420734425 724,0.0420734425 C965.333333,0.0420734425 1206.66667,16.7444101 1448,50.1490833 L1448,604.911232 C1228.43596,638.338832 994.065322,655.052632 744.888091,655.052632 C495.710859,655.052632 247.414829,638.338832 0,604.911232 L0,50.1490833 Z" id="path-1"></path>
+    </defs>
+    <g id="Branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Public/Our-Carers" transform="translate(0.000000, -1093.000000)">
+            <g id="Group-4-Copy" transform="translate(-4.000000, 1093.000000)">
+                <g id="IMG_7352">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Rectangle-21" fill="#FF9999" opacity="0.188179348" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

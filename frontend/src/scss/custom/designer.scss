@@ -1,0 +1,111 @@
+
+@import "./master";
+
+
+/******Varibles******/
+
+$f37-r: "F37Ginger";
+$f37-b: "F37Ginger-Bold";
+$f37-l: "F37Ginger-Light";
+$f37-i: "F37Ginger-italic";
+
+/*Colors*/
+
+$c1 :#F0612B;
+$c2 : #E6E6E6;
+
+/*Colors*/
+
+/*font sizes*/
+
+/*End variables*/
+
+/*Golbal CSS*/
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+
+
+@media (max-width: 767px) {
+  .comparative-box {
+    padding: 20px;
+  }
+}
+
+.hey-ellie {
+  .no-gutter {
+    padding: 0;
+    margin: 0;
+  }
+  .wizard {
+    border-bottom: 1.5px solid $c2;
+    .dot{
+      margin: auto;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      color: $c2;
+      background-color: $c2;
+    }
+    .dot.active{
+      background-color: $c1;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+    }
+  };
+  img.logo{
+    height: 46px;
+    width: 40px;
+  };
+  h2 {
+    font-family: 'Roboto', sans-serif;
+  };
+  button {
+    color: $c1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+  }
+  .c1 {
+    color: $c1;
+  }
+  .c2 {
+    color: $c2;
+  }
+  .bold {
+    font-family: 'Roboto-bold', sans-serif;
+  }
+
+}
+
+
+
+@media (max-width: 767px) {
+  .carer-cv_logo {
+    display: block;
+    width: 100%;
+    float: none;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+}

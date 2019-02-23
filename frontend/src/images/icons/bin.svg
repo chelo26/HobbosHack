@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="338px" height="440px" viewBox="0 0 338 440" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M111.331775,123 L158,123 L158,440 L122.401659,440 L111.331775,123 Z M90.3189747,123 L101.388859,440 L71.4267797,440 C61.0149783,440 52.3448201,432.011845 51.4937133,421.634889 L27,123 L90.3189747,123 Z M227.668225,123 L216.598341,440 L179,440 L179,123 L227.668225,123 Z M248.681025,123 L311,123 L286.506287,421.634889 C285.65518,432.011845 276.985022,440 266.57322,440 L237.611141,440 L248.681025,123 Z M0,61 L338,61 L338,102 L0,102 L0,61 Z M126,0 L212,0 C225.254834,-2.4348735e-15 236,10.745166 236,24 L236,41 L215,41 L215,24.5 C215,22.290861 213.209139,20.5 211,20.5 L127,20.5 C124.790861,20.5 123,22.290861 123,24.5 L123,41 L102,41 L102,24 C102,10.745166 112.745166,2.4348735e-15 126,0 Z" id="Combined-Shape" fill="#32525B"></path>
+    </g>
+</svg>
