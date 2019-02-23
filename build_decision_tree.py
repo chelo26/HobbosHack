@@ -19,3 +19,20 @@ def build_tree():
 
     return { key : {'text': questions[key], 'children': {value[0]: value[1] for value in values}} for key, values in sub_seq.items()}
 
+
+def determine_stage(seq_string_list):
+    # Expect list of [(q1, a1), (q2, a2) ...]
+    res = None
+
+    try:
+        for ss in seq_string_list:
+            res = question_sequence[ss[0]]['children'][ss[1]]['id']
+    except:
+        print("Something may have gone wrong, most probably different answer?")
+        # If there were sequences, roll back to last question
+        if seq_string_list:
+            res = seq_string_list[-1][0]
+        # Anything else might be suspicious activity, go back to initial state
+        res = '0'
+
+    return res
