@@ -18,3 +18,21 @@ def wit_response(message_text):
 	return (entity, value)
 
 #print(wit_response("Where are you from?"))
+#
+# buttons = [
+# 	{
+# 		"type": "web_url",
+# 		"url": "http://www.paginasiete.bo/",
+# 		"title": "Bolivian News"
+# 	},
+# 	{
+# 		"type": "web_url",
+# 		"url": "http://www.paginasiete.bo/",
+# 		"title": "Bolivian News"
+# 	},
+#
+# 	{
+# 		"type": "postback",
+# 		"title": "Something else",
+# 		"payload": "balbal"
+# 	}]
