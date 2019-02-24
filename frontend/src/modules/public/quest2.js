@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class  Quest1 extends Component {
+export default class  Quest2 extends Component {
     constructor(props) {
       super(props);
       this.state = {value: ''};
@@ -29,20 +29,14 @@ export default class  Quest1 extends Component {
               <img className= 'logo' src= {require('./images/icons/logo.png')} />
           </div>
           <div className= 'col no-gutter'>
-              <h2 className= 'c1'>{'Are you looking for a place to sleep?'}</h2>
+              <h2 className= 'c1'>{this.props.title}</h2>
           </div>   
         </div>
 
           <div className= 'row col no-gutter'>
           <form >
-            {['Tonight', 'Long-term', 'I’m not sure', 'No'].map((anwser, i)=> {
-              return (              
-                <div className="radio">
-                  <label><input checked={this.state.selectedOption=== anwser} 
-                      onChange={this.handleChange} value= {anwser} onClick= {(e)=> this.handleFormSubmit(e)} type="radio" name="optradio" />{anwser}</label>
-                </div>
-                )
-            })}
+            <input placeholder= {'Enter your location'} onChange={this.handleChange} value= {this.state.anwser} type="text" name="optradio" />
+            <button onClick= {()=> this.props.nextPage(1)}>Share current location</button>
           </form>
         </div>
         </div>
