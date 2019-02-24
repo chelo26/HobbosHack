@@ -9,8 +9,9 @@ from pymessenger import Bot
 from pymessenger import Button
 import re
 from datetime import datetime
-from build_decision_tree import build_tree, determine_stage
+from build_decision_tree import determine_tree_stage
 from functools import partial
+import json
 
 #  TIPICAL GREETINGS:
 GREETINGS = set(["salut!", "salut", "hello", "hi", "holaa", "hola", "hey", "holas", "heyy", "hii", "hiii"])
@@ -117,10 +118,10 @@ QUESTIONS = {1:'Hey, I’m Ellie.'
 
 
 # Build and load entire decision tree
-decision_tree = build_tree()
+# decision_tree = build_tree()
 
 # Partial function to include decision tree
-determine_tree_stage = partial(determine_stage, decision_tree=decision_tree)
+pdetermine_tree_stage = partial(determine_tree_stage, decision_tree=DECISION_TREE)
 
 
 # Initialize database:
@@ -204,6 +205,7 @@ def webhook():
     # If it receives a text message or a payload message:
     last_client_message, send_back_bool = listener_bot.parse_json_message(message_event)
 
+    print(f"Last client mesg :{last_client_message}, send :{send_back_bool}")
 
     # If we should message back:
     if send_back_bool == True:
@@ -250,18 +252,23 @@ def webhook():
 
     return "ok", 200
 
-
+'''
 @app.route("/web", methods=['POST'])
 def questionnaire_initial_state():
-    return jsonify(decision_tree['0'])
+    return jsonify(DECISION_TREE['0'])
+'''
 
+@app.route("/web/<question_stage>", methods=['POST'])
+def questionnaire_stage(question_stage):
+    if question_stage == "0":
+        return jsonify(DECISION_TREE['0'])
+    else:
+        req_answer = json.loads(request.data.decode('utf-8'))['answer']
+        # req_answer = request.form['answer']
+        seq_string = [(question_stage, req_answer)]
+        res_status = pdetermine_tree_stage(seq_string)
 
-@app.route("/web/questions/<question_stage>")
-def questionnaire_stage(question_stage, methods=['POST']):
-    req_answer = request.form['answer']
-    seq_string = [(question_stage, req_answer)]
-
-    return jsonify(determine_tree_stage(seq_string))
+        return jsonify(res_status)
 
 
 if __name__ == "__main__":
