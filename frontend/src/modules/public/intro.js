@@ -6,17 +6,30 @@ export default class Intro extends Component {
       this.state = {value: ''};
   
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
   
+    // handleChange(event) {
+    //   this.setState({value: event.target.value});
+    // }
+  
+    // handleSubmit(event) {
+    //   alert('A name was submitted: ' + this.state.value);
+    //   event.preventDefault();
+    // }
+
     handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
+        this.setState({value: event.target.value});
+      }
+    
+      handleFormSubmit(event) {
+        event.preventDefault()
+        this.setState({
+          value: event.target.value
+        }, 
+        this.props.handleSubmit(event.target.value)
+        );
+      }
   
     render() {
       return (
@@ -33,8 +46,18 @@ export default class Intro extends Component {
                         <p className= 'c1 bold'>Can I ask you a few questions?</p>
                     </div>
                     <div className= 'row'>
-                        <button onClick= {()=> this.props.nextPage(1)}>Yes</button>
-                        <button onClick= {()=> this.props.nextPage(-1)}>Not now</button>
+                        {/* <button onClick= {()=> this.props.nextPage(1)}>Yes</button>
+                        <button onClick= {()=> this.props.nextPage(-1)}>Not now</button> */}
+                        <form >
+                            {['Yes', 'Not now'].map((anwser, i)=> {
+                            return (              
+                                <div className="radio">
+                                <label><input checked={this.state.selectedOption=== anwser} 
+                                    onChange={this.handleChange} value= {anwser} onClick= {(e)=> this.handleFormSubmit(e)} type="radio" name="optradio" />{anwser}</label>
+                                </div>
+                                )
+                            })}
+                        </form>
                     </div>
                 </div>  
             </div>

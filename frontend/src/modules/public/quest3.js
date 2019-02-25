@@ -31,21 +31,21 @@ export default class  Quest3 extends Component {
           <div className= 'col no-gutter'>
             <h2 className= 'c1'>{this.props.title}</h2>
             <h3 >{this.props.subtitle}</h3>
+            <div className= 'row col no-gutter'>
+              <form >
+                {this.props.options.map((anwser, i)=> {
+                  return (              
+                    <div className="radio" key= {i}>
+                      <label><input checked={this.state.selectedOption=== anwser} 
+                          onChange={this.handleChange} value= {anwser} onClick= {(e)=> this.handleFormSubmit(e)} type="radio" name="optradio" />{anwser}</label>
+                    </div>
+                    )
+                })}
+              </form>
+            </div>
           </div>   
         </div>
 
-          <div className= 'row col no-gutter'>
-          <form >
-            {this.props.options.map((anwser, i)=> {
-              return (              
-                <div className="radio">
-                  <label><input checked={this.state.selectedOption=== anwser} 
-                      onChange={this.handleChange} value= {anwser} onClick= {(e)=> this.handleFormSubmit(e)} type="radio" name="optradio" />{anwser}</label>
-                </div>
-                )
-            })}
-          </form>
-        </div>
         </div>
 
       );

@@ -56,6 +56,9 @@ body {
   }
   .wizard {
     border-bottom: 1.5px solid $c2;
+    p {
+      margin: auto;
+    }
     .dot{
       margin: auto;
       height: 20px;
@@ -67,9 +70,14 @@ body {
     .dot.active{
       background-color: $c1;
     }
+    p.active {
+      display: none
+    }
     img {
       height: 20px;
-      width: 20px;
+      width: 33px;
+      padding-left: 7px;
+      margin: auto;
     }
   };
   img.logo{
@@ -195,7 +203,17 @@ body {
       margin: 0px
     }
   }
-
+  .active1{
+    label {
+      color: white;
+      background-color: $c1;
+    }
+  }
+  .done {
+    color: $c1;
+    background-color: white;
+    border-radius: 15px;
+  }
 }
 
 

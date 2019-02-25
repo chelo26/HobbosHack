@@ -9,8 +9,12 @@ export default class Final extends Component {
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
   
-    handleChange(event) {
-      this.setState({value: event.target.value});
+    handleChange(event, num) {
+      if(num){
+        this.setState({num: num});
+      } else {
+        this.setState({value: event.target.value});
+      }
     }
   
     handleFormSubmit(event) {
@@ -44,14 +48,15 @@ export default class Final extends Component {
                 <img className= 'logo' src= {require('./images/icons/logo.png')} />
             </div>
             <div className= 'col no-gutter'>
-              
+            
               <h2 className= 'c1'>These are your next steps:</h2>
               <div>
-              <h3 >1- Contact First Base. They will ask you where you’ve been living lately. </h3>
+              <h3 >1- They will refer you to Depaul, unless another service is more appropriate. </h3>
+              <h3 >2- Contact First Base. They will ask you where you’ve been living lately. </h3>
               <form >
                 {['Text them', 'Call them', 'Have them call you'].map((anwser, i)=> {
                   return (              
-                    <div className="radio">
+                    <div className={`radio ${(this.state.value=== anwser)&& 'active1'}`}>
                       <label><input checked={this.state.value=== anwser} 
                           onChange={this.handleChange} value= {anwser} onClick= {(e)=> this.handleChange(e)} type="radio" name="optradio" />{anwser}</label>
                     </div>
@@ -59,21 +64,28 @@ export default class Final extends Component {
                 })}
                 {(this.state.value=== 'Have them call you') && 
                   (<div>
-                      <input placeholder= {'Enter your number'} onChange={this.handleChange} value= {this.state.anwser} type="text" name="optradio" />
-                      <div className= 'row col-11'>
-                        <label class="checkbox" style= {{display: 'show'}}><input type="checkbox" value=""/></label>
-                        <p>Save and send my information so I don’t have te repeat myself.</p>
-                      </div>
+                      <input placeholder= {'Enter your number'} onChange={(e)=> this.handleChange(e, 'num')} type="text" name="optradio2" />
                   </div>)}
               </form>
+              {(this.state.value=== 'Have them call you') && 
+                  (<div>
+                      <div className= 'row col-12'>
+                        <div className= 'col-auto' style= {{padding: '0px'}}>
+                         <input  style= {{display: 'initial'}} type="checkbox" value=""/>
+                        </div>
+                        <div className= 'col no-gutter'>
+                          <p style= {{fontSize: '12px'}}>Save and send my information so I don’t have te repeat myself.</p>
+                        </div>
+                      </div>
+                  </div>)}
               </div>
               <div>
               <h3 >2- They will refer you to Depaul, unless another service is more appropriate. </h3>
-
+              <p className= 'text-me pt-3 mb-0' style= {{fontSize: '12px'}}>Click <font className= 'c1'>here</font> to text me this info?</p>
               </div>
-            </div>   
+            </div>  
           </div>
-
+          <a className= 'done text-right p-3' href="https://www.google.com">Done ></a> 
         </div>
 
       );

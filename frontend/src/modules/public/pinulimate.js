@@ -35,7 +35,7 @@ export default class  Pinulimate extends Component {
           </div>   
         </div>
 
-        <div className= 'row col no-gutter results pb-4'>
+        <div className= 'row col no-gutter results pb-4' onClick={()=> this.props.handleClick()}>
               <div className= 'col-auto px-2 my-auto'> 
                 <img className= 'center' src= {require('./images/pics/c4ws-shelter.png')} />
                 <label className= 'results'>Nightstop</label>
