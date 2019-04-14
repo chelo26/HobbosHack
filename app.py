@@ -6,13 +6,18 @@ from MessageHandlerBot import MessageHandlerBot
 from pymongo import MongoClient
 import creds as CR
 from pymessenger import Bot
-from pymessenger import Button
+from pymessenger import Button,Element
 import re
 from datetime import datetime
 from build_decision_tree import build_tree, determine_stage
 from functools import partial
 
 #  TIPICAL GREETINGS:
+
+
+
+
+
 GREETINGS = set(["salut!", "salut", "hello", "hi", "holaa", "hola", "hey", "holas", "heyy", "hii", "hiii"])
 
 questions = {'0': 'Are you looking for a place to stay tonight?',
@@ -20,6 +25,31 @@ questions = {'0': 'Are you looking for a place to stay tonight?',
              '2': 'We\'re looking for the service that\'s best for you.\nHow old are you?'}
 
 answers = {'0': ['yes', 'no']}
+
+
+HOMES_BUTTON = [
+    {
+        "type": "web_url",
+        "url": "https://uk.depaulcharity.org/",
+        "title": "NightStop 🏠"
+    },
+    {
+        "type": "web_url",
+        "url": "https://centrepoint.org.uk/ ",
+        "title": "CentrePoint 🛏"
+    },
+    {
+        "type": "web_url",
+        "url": "https://www.ymca.org.uk/about/what-we-do/accommodation",
+        "title": "YMCA"
+    },
+    {
+        "type": "postback",
+        "title": "Something else",
+        "payload": "otro"
+    }]
+
+
 
 
 # Building the tree:
@@ -34,7 +64,7 @@ def build_tree():
                       '\n1) I\'m pregnant'
                       '\n2) I\'m experiencing depression'
                       '\n3) Substance abuse'
-                      '\n4) I\'m running away from a dangeours relationship',
+                      '\n4) I\'m running away from a dangerous relationship',
                  '6': 'Do you have criminal record?'
                  }
 
@@ -75,23 +105,18 @@ def determine_stage(seq_string_list):
     return res
 
 
-# CODE_TREE = {0:'A0',
-#              1:'Q1',
-#              2:'A1',
-#              3:'Q2',
-#              4:'A2',
-#              5:'A3'
-#              }
-
 CODE_TREE = {1:'Q1',
              3:'Q2',
              5:'Q3',
              7:'Q4',
              9:'Q5',
-             11:'Q6'
+             11:'Q6',
+             13:'Q7',
+             15:'Q8',
+             17:'Q9'
              }
 
-QUESTIONS = {1:'Hey, I’m Ellie.'
+QUESTIONS = {1:'Hey, I\'m Ellie. '
                '\nI\'m a virtual friend and I\'m here to help you find a safe place to stay.'
                'I\'m not a real person and don’t store any of your information unless you agree.'
                '\nIn fact, my sole existence is to give you the information you need.'
@@ -100,7 +125,7 @@ QUESTIONS = {1:'Hey, I’m Ellie.'
              3:'Are you looking for a safe place to stay tonight?',
              5:'Where are you based?',
              7:'We are looking for the service that\'s the best for you. How old are you?',
-             9:'Are you a... '
+             9:'We want to help you feel comfortable in your environment. Are you a... '
                     '\n1) Woman,'
                     '\n2) Man,'
                     '\n3) LGBT,'
@@ -110,7 +135,8 @@ QUESTIONS = {1:'Hey, I’m Ellie.'
                     '\n2) I\'m experiencing depression'
                     '\n3) Substance abuse'
                     '\n4) I\'m running away from a dangeours relationship',
-             13:'Do you have a criminal record?'
+             13:'Do you have a criminal record?',
+             15:'Great, we can offer you the following:'
 
              }
 
@@ -161,6 +187,10 @@ def ask_question(responder_bot, sender_id, question_number=1):
 
     if question is None:
         return None
+    elif question_number == 15:
+        print('sending button')
+        responder_bot.send_button_message(sender_id,question,HOMES_BUTTON)
+        return question_number
     else:
         responder_bot.send_text_message(sender_id, question)
         return question_number
@@ -168,6 +198,8 @@ def ask_question(responder_bot, sender_id, question_number=1):
 
 # Messages database:
 messages_table = point_collection()
+messages_table.remove()
+
 
 # Bots:
 responder_bot = Bot(CR.PAGE_ACCESS_TOKEN)
@@ -228,17 +260,20 @@ def webhook():
         # 4. Sending the answer:
         if type(message_seq) != list:
 
+
             num_past_messages = len(message_seq)
             print('message seq: ', message_seq)
             print('number of past messages: ', num_past_messages)
 
             question_number = ask_question(responder_bot, sender_id, num_past_messages)
             print('code question: ', question_number)
+            ## RETURNS NONE WHEN reached 15.
+
         else:
             question_number = ask_question(responder_bot, sender_id)
             print('exception: ',question_number)
 
-
+        print('code question before looking the tree: ', question_number)
         node = CODE_TREE.get(question_number)
         print('node: ',node)
 
@@ -266,3 +301,4 @@ def questionnaire_stage(question_stage, methods=['POST']):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+

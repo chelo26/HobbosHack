@@ -81,9 +81,14 @@ class MessageHandlerBot():
                 else:
                     return None, False
             elif messaging.get("postback"):
-                message = messaging.get("postback")
-                payload = message["payload"]
+                #message = messaging.get("postback")
+                #payload = message["payload"]
+                print('got to payload')
+                payload = 'If you\'d like to contact us directly, please call ' \
+                          '0207 939 1235, 0207 939 1254 or message us on ' \
+                          'nightstopuk@depaulcharity.org.uk'
                 self.text = payload
+                self.code = 'A13'
                 return payload, True
             else:
                 return None, False
