@@ -56,6 +56,9 @@ body {
   }
   .wizard {
     border-bottom: 1.5px solid $c2;
+    p {
+      margin: auto;
+    }
     .dot{
       margin: auto;
       height: 20px;
@@ -67,9 +70,14 @@ body {
     .dot.active{
       background-color: $c1;
     }
+    p.active {
+      display: none
+    }
     img {
       height: 20px;
-      width: 20px;
+      width: 33px;
+      padding-left: 7px;
+      margin: auto;
     }
   };
   img.logo{
@@ -95,7 +103,117 @@ body {
   .bold {
     font-family: 'Roboto-bold', sans-serif;
   }
-
+  label {
+    color: $c1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+    input {
+      display: none;
+      
+    };
+  }
+  input {
+    color: $c1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+  }
+  form {
+    div {
+      display: inline
+    }
+  }
+  .questions {
+    h3{
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .responses {
+    box-shadow: 0px -3px 26px -5px grey;
+    h2 {
+      font-size: 14px; 
+      line-height: 14px; 
+      // margin: 0px;
+    };
+    h3 {
+      font-size: 12px; 
+      line-height: 16px; 
+      // margin: 0px;
+    }
+    .caracel {
+      display: -webkit-box;
+      overflow: scroll;
+      label {
+        position: absolute;
+        left: 18px;
+        color: white;
+        top: 68px;
+        background: none;
+        border: none;
+        font-weight: bolder;
+        width: 100px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 14px; 
+        line-height: 14px; 
+        margin: 0px;
+      };
+      h3 {
+        font-size: 12px; 
+        line-height: 16px; 
+        margin: 0px;
+      }
+    }
+  }
+  .center {
+    height: 120px;
+    width: 120px;
+    border-radius: 10px;
+  }
+  label.results {
+    position: absolute;
+    left: 18px;
+    color: white;
+    top: 68px;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    width: 100px;
+    text-align: center;
+  }
+  .results {
+    h2 {
+      font-size: 14px;
+      margin: 0px;
+      font-weight: 700;
+    };
+    h3 {
+      font-size: 12px;
+      margin: 0px
+    }
+  }
+  .active1{
+    label {
+      color: white;
+      background-color: $c1;
+    }
+  }
+  .done {
+    color: $c1;
+    background-color: white;
+    border-radius: 15px;
+  }
 }
 
 

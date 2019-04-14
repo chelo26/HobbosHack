@@ -160,6 +160,8 @@ body {
 
 .hey-ellie .wizard {
   border-bottom: 1.5px solid #E6E6E6; }
+  .hey-ellie .wizard p {
+    margin: auto; }
   .hey-ellie .wizard .dot {
     margin: auto;
     height: 20px;
@@ -169,9 +171,13 @@ body {
     background-color: #E6E6E6; }
   .hey-ellie .wizard .dot.active {
     background-color: #F0612B; }
+  .hey-ellie .wizard p.active {
+    display: none; }
   .hey-ellie .wizard img {
     height: 20px;
-    width: 20px; }
+    width: 33px;
+    padding-left: 7px;
+    margin: auto; }
 
 .hey-ellie img.logo {
   height: 46px;
@@ -195,6 +201,99 @@ body {
 
 .hey-ellie .bold {
   font-family: 'Roboto-bold', sans-serif; }
+
+.hey-ellie label {
+  color: #F0612B;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  border-color: #d8d8d8 #d1d1d1 #bababa;
+  border-style: solid;
+  border-width: 1px; }
+  .hey-ellie label input {
+    display: none; }
+
+.hey-ellie input {
+  color: #F0612B;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  border-color: #d8d8d8 #d1d1d1 #bababa;
+  border-style: solid;
+  border-width: 1px; }
+
+.hey-ellie form div {
+  display: inline; }
+
+.hey-ellie .questions h3 {
+  font-size: 14px;
+  line-height: 20px; }
+
+.hey-ellie .responses {
+  box-shadow: 0px -3px 26px -5px grey; }
+  .hey-ellie .responses h2 {
+    font-size: 14px;
+    line-height: 14px; }
+  .hey-ellie .responses h3 {
+    font-size: 12px;
+    line-height: 16px; }
+  .hey-ellie .responses .caracel {
+    display: -webkit-box;
+    overflow: scroll; }
+    .hey-ellie .responses .caracel label {
+      position: absolute;
+      left: 18px;
+      color: white;
+      top: 68px;
+      background: none;
+      border: none;
+      font-weight: bolder;
+      width: 100px;
+      text-align: center; }
+    .hey-ellie .responses .caracel h2 {
+      font-size: 14px;
+      line-height: 14px;
+      margin: 0px; }
+    .hey-ellie .responses .caracel h3 {
+      font-size: 12px;
+      line-height: 16px;
+      margin: 0px; }
+
+.hey-ellie .center {
+  height: 120px;
+  width: 120px;
+  border-radius: 10px; }
+
+.hey-ellie label.results {
+  position: absolute;
+  left: 18px;
+  color: white;
+  top: 68px;
+  background: none;
+  border: none;
+  font-weight: bolder;
+  width: 100px;
+  text-align: center; }
+
+.hey-ellie .results h2 {
+  font-size: 14px;
+  margin: 0px;
+  font-weight: 700; }
+
+.hey-ellie .results h3 {
+  font-size: 12px;
+  margin: 0px; }
+
+.hey-ellie .active1 label {
+  color: white;
+  background-color: #F0612B; }
+
+.hey-ellie .done {
+  color: #F0612B;
+  background-color: white;
+  border-radius: 15px; }
 
 @media (max-width: 767px) {
   .carer-cv_logo {
